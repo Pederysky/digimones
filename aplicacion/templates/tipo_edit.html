@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+{% extends "baseFin.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tipo</title>
+</head>
+<body>
+    <h1>Editar Tipo</h1>
+    <form method="POST" action="{{ url_for('tipo_edit', id=tipo.id) }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div>
+            <label for="tipo">Nuevo Tipo:</label>
+            {{ form.tipo(class="form-control", id="tipo") }}
+        </div>
+        
+        <div>
+            <label for="imagen">Nueva Imagen (opcional):</label>
+            {{ form.imagen(class="form-control", id="imagen") }}
+        </div>
+
+        {% if tipo.imagen %}
+        <div>
+            <label>Imagen Actual:</label><br>
+            <img src="{{ url_for('static', filename=tipo.imagen) }}" alt="Imagen del tipo" style="max-width: 200px;">
+        </div>
+        {% endif %}
+
+        <div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{{ url_for('tipos') }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</body>
+{% endblock %}

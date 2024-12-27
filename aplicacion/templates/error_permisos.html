@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Permiso Denegado</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Permiso Denegado</h1>
+        <p>{{ error }}</p>
+        <p>Lo siento, {{ current_user.username }}, no tienes permisos para realizar esta acción.</p>
+        <a href="{{ url_for('inicio') }}" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+</body>
+</html>

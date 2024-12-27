@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% extends "baseFin.html" %}
+    {% block content %}
+    <h1>Editar Digimon</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <label for="nombre">Nombre</label>
+        {{ form.nombre(class="form-control") }}
+        
+        <label for="ataque">Ataque</label>
+        {{ form.ataque(class="form-control") }}
+        
+        <label for="defensa">Defensa</label>
+        {{ form.defensa(class="form-control") }}
+        
+        <label for="imagen">Imagen Actual</label>
+        <img src="{{ url_for('static', filename='uploads/' ~ digimon.imagen) }}" alt="{{ digimon.nombre }}" style="max-width:200px;">
+        
+        <label for="imagen">Cambiar Imagen</label>
+        {{ form.imagen(class="form-control") }}
+        
+        <label for="nivel">Nivel</label>
+        {{ form.nivel(class="form-control") }}
+        
+        <label for="TipoId">Tipo</label>
+        {{ form.TipoId(class="form-control") }}
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    
+    {% endblock %}
+</html>

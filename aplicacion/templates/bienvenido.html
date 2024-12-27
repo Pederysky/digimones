@@ -1,0 +1,15 @@
+{% extends "baseFin.html" %}
+{% block title %}Inicio Aplicacion Digimon{% endblock %}
+{% block content %}
+    <h1>Aplicacion Digimon</h1>
+    <p>En esta aplicacion podrá dar de alta y baja Digimones, así como sus tipos</p>
+    
+    {% if current_user.is_authenticated %}
+        <p>Hola, {{ current_user.username }}!</p>
+        <a href="{{ url_for('logout') }}" class="btn btn-primary">Cerrar Sesión</a>
+    {% else %}
+        <p>¡Por favor, inicia sesión para continuar!</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Iniciar Sesión</a>
+        <a href="{{ url_for('registro') }}" class="btn btn-secondary">Registrarse</a>
+    {% endif %}
+{% endblock %}

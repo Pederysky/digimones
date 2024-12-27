@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+{% extends "baseFin.html" %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Tipo</title>
+</head>
+<body>    
+        <h1>Eliminar Tipo</h1>
+        <p>¿Estás seguro de que deseas eliminar el tipo <strong>{{ tipo.tipo }}</strong>? Esta acción no se puede deshacer.</p>
+        
+        <form method="POST" action="{{ url_for('tipo_delete', id=tipo.id) }}">
+            {{ form.hidden_tag() }}
+            {{ form.si(class="btn btn-danger") }}
+            {{ form.no(class="btn btn-secondary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "baseFin.html" %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='css/adminlte/adminlte.min.css')}}">
+{% endblock %}
+{% block title %}Digimones{% endblock %}
+{% block content %}
+    <h2>Digimones</h2>
+    {% if digimones %}
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Nivel</th>
+          <th scope="col">Imagen</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+    {% for digi in digimones -%}
+      <tr>
+        <td>{{ digi.name }}</td>
+        <td>{{ digi.level }}</td>
+        <td><img src="{{digi.img}}" width="80" height="80"></td>
+      </tr>
+    {% endfor -%}
+      </tbody>
+    </table>
+	
+    {% else %}
+    	<p>No hay digimones></p>
+    {% endif %}
+{% endblock %}
+
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('static', filename='js/adminlte/adminlte.min.js')}}"></script>
+{% endblock %}
